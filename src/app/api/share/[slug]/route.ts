@@ -7,6 +7,7 @@ export async function GET(
   request: NextRequest,
   context: { params: { slug: string } }
 ) {
+  const { slug } = context.params;
   try {
     await dbConnect();
 
