@@ -1,24 +1,25 @@
-import { NextRequest, NextResponse } from 'next/server'
-import dbConnect from '@/lib/mongodb'
-import Link from '@/models/Link'
+import { NextRequest, NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import Link from '@/models/Link';
 
-// Correct type for dynamic route params
+// GET - Fetch link by slug for public sharing
 export async function GET(
   request: NextRequest,
-  context: { params: { slug: string } }
+  { params }: { params: { slug: string } }
 ) {
-  const { slug } = context.params;
   try {
     await dbConnect();
 
-    const { slug } = context.params;
+    const { slug } = params;
 
+    // Find the link by customSlug
     const link = await Link.findOne({ customSlug: slug });
 
     if (!link) {
       return NextResponse.json({ error: 'Link not found' }, { status: 404 });
     }
 
+    // Increment view count
     await Link.findByIdAndUpdate(link._id, { $inc: { views: 1 } });
 
     return NextResponse.json({ link });
