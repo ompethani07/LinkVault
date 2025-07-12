@@ -5,7 +5,7 @@ import Link from '@/models/Link';
 // GET - Fetch link by slug for public sharing
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: any
 ) {
   try {
     await dbConnect();
