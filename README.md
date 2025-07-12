@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LinkVault - Professional Link Management Platform
+
+A secure, professional link management platform built with Next.js and Clerk authentication.
+
+## Features
+
+- 🔐 **Secure Authentication** - Google OAuth integration via Clerk
+- 🎨 **Professional UI** - Modern 3D logo and gradient design
+- 📁 **File Management** - Upload and manage files alongside links
+- 🗂️ **Smart Organization** - Categorize links with tags and collections
+- 📊 **Analytics Dashboard** - Track your link performance
+- 🔗 **Easy Link Management** - Add, edit, and delete links with ease
+- 📱 **Responsive Design** - Works perfectly on all devices
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React, TypeScript
+- **Styling**: Tailwind CSS
+- **Authentication**: Clerk
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+3. Set up environment variables in `.env.local`:
+   ```
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+   CLERK_SECRET_KEY=your_secret_key
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Project Structure
+
+```
+linkvault/
+├── src/
+│   ├── app/
+│   │   ├── dashboard/          # Main dashboard page
+│   │   ├── sign-in/           # Sign-in page
+│   │   ├── sign-up/           # Sign-up page
+│   │   ├── welcome/           # Welcome flow
+│   │   ├── layout.tsx         # Root layout with Clerk provider
+│   │   └── page.tsx           # Landing page
+│   └── components/            # Reusable components
+├── middleware.ts              # Clerk middleware
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Authentication Flow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. User lands on the homepage with 3D LinkVault logo
+2. Clicks "Get Started with Google" to sign in via Clerk
+3. After authentication, redirected to welcome flow
+4. Welcome flow has 3 professional steps (Welcome → Features → Ready)
+5. Finally redirected to main dashboard with full functionality
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Dashboard Features
 
-## Learn More
+- **Add Links**: Professional modal to add new links with categories
+- **File Upload**: Upload files and manage them like links
+- **Categories**: Organize links by categories (General, Work, Personal, etc.)
+- **Statistics**: View analytics about your links and files
+- **Professional UI**: Clean, modern interface with smooth animations
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/welcome
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/welcome
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Commands
 
-## Deploy on Vercel
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License
