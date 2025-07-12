@@ -5,7 +5,7 @@ import Link from '@/models/Link'
 // POST - Track click on a link
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: any
 ) {
   try {
     await dbConnect()
