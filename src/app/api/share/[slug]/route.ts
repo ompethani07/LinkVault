@@ -3,14 +3,11 @@ import dbConnect from '@/lib/mongodb'
 import Link from '@/models/Link'
 
 // GET - Fetch link by slug for public sharing
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { slug: string } }
-) {
+export async function GET(request: NextRequest, context: { params: { slug: string } }) {
   try {
     await dbConnect()
     
-    const slug = params.slug
+    const { slug } = context.params;
     
     // Find the link by customSlug
     const link = await Link.findOne({ customSlug: slug })
