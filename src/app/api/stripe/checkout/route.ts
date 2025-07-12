@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     if (!user) {
       // Get user email from Clerk
       const clerk = await import('@clerk/nextjs/server');
-      const clerkUser = await clerk.getUser(userId);
+      const clerkUser = await clerk.default.getUser(userId);
       
       user = await User.create({
         userId,
